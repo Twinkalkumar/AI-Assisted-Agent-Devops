@@ -19,7 +19,7 @@ include:
 """
 
 def generate_dockerfile(language):
-    response = ollama.chat(model='llama3.2:1b',message=[{'role': 'user', 'content': PROMPT.format(language=language)}])
+    response = ollama.chat(model='llama3.2:1b',messages=[{'role': 'user', 'content': PROMPT.format(language=language)}])
     return response['message']['content']
 
 if __name__ == '__main__':
