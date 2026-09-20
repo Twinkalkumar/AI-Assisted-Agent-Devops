@@ -8,7 +8,7 @@ os.environ["GOOGLE_API_KEY"] = "xxxxxxxxxxxxxxxxxxxxxxxx"
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 model = genai.GenerativeModel('gemini-1.5-pro')
 
-PROMT = """
+PROMPT = """
 Only Generate an ideal dockerfile for {language} with best prectices. Do not provide any description
 include:
 - base image 

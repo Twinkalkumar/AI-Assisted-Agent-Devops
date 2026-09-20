@@ -1,6 +1,6 @@
 import ollama
 
-PROMT = """
+PROMPT = """
 Only Generate an ideal dockerfile for {language} with best prectices. Do not provide any description
 include:
 - base image 
