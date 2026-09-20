@@ -19,8 +19,8 @@ include:
 """
 
 def generate_dockerfile(language):
-    response = ollama.chat(model='llama3.2:1b',messages=[{'role': 'user', 'content': PROMPT.format(language=language)}])
-    return response['message']['content']
+    response = model.generate_content(prompt.format(language=language))
+    return response.txt
 
 if __name__ == '__main__':
     language = input("Enter ther programming langauge:")
