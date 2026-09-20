@@ -6,7 +6,7 @@ os.environ["GOOGLE_API_KEY"] = "xxxxxxxxxxxxxxxxxxxxxxxx"
 
 # Configure the Gemini model
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-model = genai.GenerativeModel('gemini-1.5-pro')
+model = genai.GenerativeModel('gemini-3.6-flash')
 
 PROMPT = """
 Only Generate an ideal dockerfile for {language} with best prectices. Do not provide any description
@@ -20,7 +20,7 @@ include:
 
 def generate_dockerfile(language):
     response = model.generate_content(prompt.format(language=language))
-    return response.txt
+    return response.text
 
 if __name__ == '__main__':
     language = input("Enter ther programming langauge:")
