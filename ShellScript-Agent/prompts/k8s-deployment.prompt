@@ -1,0 +1,6 @@
+Only generate an ideal Kubernetes Deployment and Service YAML for %s with best practices. Do not provide any description
+include:
+- apiVersion, kind, and metadata with meaningful labels
+- resource requests and limits
+- readiness and liveness probes
+- a Service exposing the Deployment
