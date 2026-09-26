@@ -1,0 +1,130 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1e1e2f;
+  color: #f0f0f0;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.game {
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 0.5rem;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.controls select {
+  margin-left: 0.4rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  border: none;
+  background: #2c2c44;
+  color: #f0f0f0;
+}
+
+.hidden {
+  display: none;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #b0b0c0;
+}
+
+.score strong {
+  font-size: 1.4rem;
+  color: #ffffff;
+}
+
+.status {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  min-height: 1.5rem;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 6px;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.cell {
+  background: #2c2c44;
+  border: none;
+  border-radius: 8px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.cell:hover:not(:disabled) {
+  background: #3a3a5c;
+}
+
+.cell:disabled {
+  cursor: default;
+}
+
+.cell.winner {
+  background: #4caf50;
+}
+
+.actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.reset {
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  background: #5865f2;
+  color: white;
+  cursor: pointer;
+}
+
+.reset:hover {
+  background: #4752c4;
+}
+
+.reset.secondary {
+  background: #44445c;
+}
+
+.reset.secondary:hover {
+  background: #55556e;
+}

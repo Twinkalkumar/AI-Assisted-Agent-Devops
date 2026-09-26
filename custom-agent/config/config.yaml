@@ -1,0 +1,20 @@
+# All LLM selection lives here and nowhere else in the codebase.
+# Swap providers by changing `llm.provider` (+ the matching env vars in .env).
+llm:
+  provider: ollama        # openai | anthropic | azure_openai | ollama
+  model: llama3.1
+  temperature: 0.2
+  max_tokens: 4096
+
+agent:
+  max_iterations: 12
+  output_dir: ./output
+
+tools:
+  enabled:
+    - write_file
+    - read_file
+    - list_directory
+    # Executes shell/PowerShell commands on this machine - opt-in only,
+    # since it lets the agent run kubectl apply, git push, etc.
+    - run_command
