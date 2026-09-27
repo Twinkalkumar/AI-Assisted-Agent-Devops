@@ -3,6 +3,7 @@ from pathlib import Path
 from .base import Tool
 from .file_tools import ListDirectoryTool, ReadFileTool, WriteFileTool
 from .shell_tools import RunCommandTool
+from .system_tools import GetSystemMetricsTool
 
 # Maps config.yaml `tools.enabled` entries -> constructor.
 # Add new tools here (and as a new module) to make them available.
@@ -11,6 +12,7 @@ _TOOL_BUILDERS = {
     "read_file": ReadFileTool,
     "list_directory": ListDirectoryTool,
     "run_command": RunCommandTool,
+    "get_system_metrics": GetSystemMetricsTool,
 }
 
 

@@ -48,6 +48,16 @@ def build_llm(llm_config: dict) -> LLMProvider:
             api_version=os.environ.get("AZURE_OPENAI_API_VERSION", "2024-06-01"),
         )
 
+    if provider == "gemini":
+        from .providers.gemini_provider import GeminiProvider
+
+        return GeminiProvider(
+            model=model,
+            temperature=temperature,
+            max_tokens=max_tokens,
+            api_key=os.environ["GEMINI_API_KEY"],
+        )
+
     if provider == "ollama":
         from .providers.ollama_provider import OllamaProvider
 
@@ -60,5 +70,5 @@ def build_llm(llm_config: dict) -> LLMProvider:
 
     raise ValueError(
         f"Unknown llm.provider '{provider}'. "
-        "Expected one of: openai, anthropic, azure_openai, ollama."
+        "Expected one of: openai, anthropic, azure_openai, gemini, ollama."
     )
