@@ -1,0 +1,33 @@
+# Risk thresholds, idle cutoffs, and safety limits.
+# NOTE: the "never auto-act on prod or untagged resources" rule is NOT
+# configurable here — it's hardcoded in risk_classifier.py by design.
+
+# How far back to pull utilization metrics.
+lookback_days: 14
+
+# Dead-man's switch: if fewer than this fraction of expected data points
+# were returned (metrics gap, or resource younger than the lookback
+# window), the resource is skipped rather than guessed about.
+min_data_points_pct: 0.6
+
+# A resource averaging below this CPU% over the lookback window is
+# considered idle (candidate for downsize / stop / db resize).
+idle_cpu_pct_threshold: 10.0
+
+# An EBS/Managed Disk volume must be unattached for at least this many
+# days before it's eligible for LOW-risk auto-delete.
+orphaned_volume_min_days: 7
+
+# "Outside business hours" window used for the dev/test auto-stop rule.
+business_hours:
+  start_hour: 8
+  end_hour: 19
+  timezone: "UTC"
+
+# Blast-radius cap: max LOW-risk actions auto-executed in a single `apply` run.
+max_auto_actions_per_run: 10
+
+# Rough estimated savings factor for a one-tier compute downsize, used
+# only for the savings estimate shown in `plan` (illustrative, not a
+# live pricing-API lookup).
+downsize_savings_factor: 0.5

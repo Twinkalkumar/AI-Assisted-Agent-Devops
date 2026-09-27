@@ -1,0 +1,31 @@
+# Which tag keys/values identify environment and criticality.
+# risk_classifier.py reads this to decide is_prod / is_dev_or_test / is_critical.
+# The *behavior* "prod or untagged => always human approval" is hardcoded in
+# code and cannot be changed by editing this file — only the tag vocabulary
+# used to detect those states lives here.
+
+env_tag_keys:
+  - "env"
+  - "Environment"
+  - "environment"
+
+prod_values:
+  - "prod"
+  - "production"
+
+dev_values:
+  - "dev"
+  - "development"
+
+test_values:
+  - "test"
+  - "staging"
+  - "qa"
+
+critical_tag_keys:
+  - "critical"
+  - "Critical"
+
+critical_values:
+  - "true"
+  - "yes"

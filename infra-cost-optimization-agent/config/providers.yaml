@@ -1,0 +1,29 @@
+# Which accounts/subscriptions/projects CostGuard connects to, per provider.
+# Credentials themselves are never stored here — they come from each
+# provider's default credential chain (env vars, profile files, instance
+# roles, etc). "profile" / IDs below just select which credentials to use.
+
+aws:
+  enabled: true
+  accounts:
+    - name: "example-aws-account"
+      region: "us-east-1"
+      # Maps to an AWS CLI/SDK profile (~/.aws/credentials). Omit to use
+      # the default credential chain (env vars / instance role).
+      profile: "default"
+
+azure:
+  # Adapter is stubbed (see src/providers/azure_provider.py) — disabled
+  # until fully implemented.
+  enabled: false
+  subscriptions:
+    - name: "example-azure-subscription"
+      subscription_id: "${AZURE_SUBSCRIPTION_ID}"
+
+gcp:
+  # Adapter is stubbed (see src/providers/gcp_provider.py) — disabled
+  # until fully implemented.
+  enabled: false
+  projects:
+    - name: "example-gcp-project"
+      project_id: "${GCP_PROJECT_ID}"

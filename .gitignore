@@ -2,3 +2,8 @@
 __pycache__/
 .DS_Store
 report.md
+cost-optimization-agent/logs/
+cost-optimization-agent/.venv/
+infra-cost-optimization-agent/logs/
+infra-cost-optimization-agent/state/
+infra-cost-optimization-agent/.venv/

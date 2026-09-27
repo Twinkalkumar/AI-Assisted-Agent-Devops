@@ -1,0 +1,81 @@
+# Per-provider model catalog: capability tier + pricing (USD per 1M tokens).
+# Update pricing here as providers change rates — no code changes needed.
+#
+# tier meaning:
+#   simple  - fast/cheap models, fine for classification, extraction, short Q&A
+#   complex - stronger reasoning models for multi-step / analytical tasks
+#   premium - highest-capability models, used only when complex tier is
+#             insufficient or explicitly requested
+
+providers:
+  ollama:
+    base_url_env: OLLAMA_BASE_URL
+    models:
+      - name: llama3.1:8b
+        tier: simple
+        cost_per_1m_input: 0.0
+        cost_per_1m_output: 0.0
+        avg_latency_ms: 800
+      - name: llama3.1:70b
+        tier: complex
+        cost_per_1m_input: 0.0
+        cost_per_1m_output: 0.0
+        avg_latency_ms: 2500
+
+  openai:
+    api_key_env: OPENAI_API_KEY
+    models:
+      - name: gpt-4o-mini
+        tier: simple
+        cost_per_1m_input: 0.15
+        cost_per_1m_output: 0.60
+        avg_latency_ms: 900
+      - name: gpt-4.1
+        tier: complex
+        cost_per_1m_input: 2.00
+        cost_per_1m_output: 8.00
+        avg_latency_ms: 1800
+
+  anthropic:
+    api_key_env: ANTHROPIC_API_KEY
+    models:
+      - name: claude-haiku-4-5
+        tier: simple
+        cost_per_1m_input: 1.00
+        cost_per_1m_output: 5.00
+        avg_latency_ms: 700
+      - name: claude-sonnet-5
+        tier: complex
+        cost_per_1m_input: 3.00
+        cost_per_1m_output: 15.00
+        avg_latency_ms: 1500
+      - name: claude-opus-5
+        tier: premium
+        cost_per_1m_input: 15.00
+        cost_per_1m_output: 75.00
+        avg_latency_ms: 2200
+
+  gemini:
+    api_key_env: GEMINI_API_KEY
+    models:
+      - name: gemini-2.5-flash
+        tier: simple
+        cost_per_1m_input: 0.30
+        cost_per_1m_output: 2.50
+        avg_latency_ms: 800
+      - name: gemini-2.5-pro
+        tier: complex
+        cost_per_1m_input: 1.25
+        cost_per_1m_output: 10.00
+        avg_latency_ms: 1600
+
+routing:
+  # Requests are rejected/escalated to fallback if estimated cost exceeds this,
+  # unless overridden via --cost-ceiling.
+  default_cost_ceiling_usd: 0.05
+  # When true, an available Ollama model in an eligible tier is always tried first.
+  prefer_local_for_simple: true
+  # Tiers a task's classified complexity is allowed to use, in preference order.
+  tier_eligibility:
+    simple: [simple, complex, premium]
+    complex: [complex, premium]
